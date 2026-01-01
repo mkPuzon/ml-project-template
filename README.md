@@ -33,6 +33,7 @@ my-ml-project/
 1. **Install uv**: If not yet installed, run `curl -LsSf https://astral.sh/uv/install.sh | sh`
 2. **Sync Environment**: Run the following to create a venv and install all dependencies:```uv sync --extra dev```
 3. Run `uv run pre-commit install` to set up Ruff
+4. Uncomment .gitignore file
 
 **Confirm setup**
 
