@@ -1,0 +1,9 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.3.0  # Use the latest version
+    hooks:
+      # Run the linter (checks for bugs, unused imports, etc.)
+      - id: ruff
+        args: [ --fix ] # Automatically fix what can be fixed
+      # Run the formatter (standardizes spaces, quotes, and indents)
+      - id: ruff-format
