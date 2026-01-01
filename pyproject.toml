@@ -1,0 +1,53 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ml-project-template"
+version = "0.1.0"
+description = "An organized and maintainable ML project template."
+readme = "README.md"
+requires-python = ">=3.10"
+# main dependencies to run models
+dependencies = [
+    "numpy>=1.26.0",
+    "pandas>=2.1.0",
+    "scikit-learn>=1.4.0",
+    "matplotlib>=3.8.0",
+    "seaborn>=0.13.0",
+    "tqdm>=4.66.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",        # Testing framework
+    "ruff>=0.3.0",          # Linter/formatter
+    "pre-commit>=3.6.0",
+    "jupyter>=1.0.0",       # Build backend
+    "ipykernel>=6.29.0",    # Jupyter support
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/main_project"]
+
+# make sure pytest can find code
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "--import-mode=importlib"
+
+# Ruff configurations
+[tool.ruff]
+# Standard ML line length is often a bit wider than 88
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+# Select specific rules: 
+# E = Error, F = Pyflakes, I = Isort (sorting imports)
+select = ["E", "F", "I"]
+ignore = []
+
+[tool.ruff.lint.isort]
+# This makes sure your local 'src' imports stay grouped together
+known-first-party = ["main_project"]
